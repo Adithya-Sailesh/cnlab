@@ -48,6 +48,7 @@ int main(){
         exit(EXIT_FAILURE);
     }
     printf("\nClient Connected Scussfully");
+    //Read and Write
     printf("\nReading Message !!!!!!!!!");
     read(clisocket,msg,sizeof(msg));
     printf("\n------------------------------------");
