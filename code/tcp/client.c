@@ -28,9 +28,8 @@ int main(){
     }
     printf("\nConnection Success!!!!!!!!!!!!\n");
     printf("\nMsg Send to Server\n");
-    send(clisocket,"Message From Client",sizeof("Message From Client"),0);
-    printf("\nMsg Send to Server\n");
-    recv(clisocket,msg,sizeof(msg),0);
+    write(clisocket,"Message From Client",sizeof("Message From Client"));
+    read(clisocket,msg,sizeof(msg));
     printf("\n---------------------------------\n");
     printf("Message from server :%s",msg);
     printf("\n---------------------------------\n");
