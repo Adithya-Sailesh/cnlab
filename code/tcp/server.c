@@ -41,6 +41,12 @@ int main(){
         exit(EXIT_FAILURE);
     }
     printf("\nClient Connected Scussfully");
-    
-
+    printf("\nReading Message !!!!!!!!!");
+    read(clisocket,msg,sizeof(msg));
+    printf("\n------------------------------------");
+    printf("\nMessage From client is:%s",msg);
+    printf("\n------------------------------------\n");
+    write(clisocket,"Hello I am msg from server",sizeof("Hello I am msg from server"));
+    close(sersocket);
+    close(clisocket);
 }
