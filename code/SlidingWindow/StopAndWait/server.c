@@ -6,7 +6,7 @@
 #include<unistd.h>
 int main(){
     int sersocket,clisocket,port;
-    int k=5,m=0;
+    int k=5,m=1;
     char buffer[200];
     struct sockaddr_in seraddr,cliaddr;
     socklen_t len;
@@ -38,8 +38,9 @@ int main(){
         printf("error");
         exit(0);
     }
-    printf("\nConnection scuccfull");
+    printf("\nConnection Successfull");
     while(k!=0){
+        //Receiving Frame (no Error)
         int y=recv(clisocket,buffer,sizeof(buffer),0);
         if(y==-1){
             printf("\nError!!!!!");
@@ -50,15 +51,22 @@ int main(){
         }else{
             printf("\n --Frame %d not Recieved ",m);
         }
+        //Sending Ack(Error  Happens Here)
         if(m%2==0){
             strcpy(buffer,"ack");
         }else{
             strcpy(buffer,"kca");
-            printf("Ack lost\n");
+            printf("\nAck lost\n");
             for (int p = 1; p <= 3; p++) {
                 printf("Waiting for %d seconds\n", p);
                 sleep(1);
             }
+            printf("\nRetransmitting Ack");
+            strcpy(buffer,"ack");
         }
+        printf("\nSending %d Ack \n",m);
+        int z = send(clisocket, buffer, strlen(buffer), 0);
+        k--;
+        m++;
     }
 }
