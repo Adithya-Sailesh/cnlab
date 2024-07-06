@@ -1,4 +1,4 @@
-//first run server
+//first run server.c
 
 #include<stdio.h>
 #include<string.h>
