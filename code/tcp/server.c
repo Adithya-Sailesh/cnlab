@@ -5,6 +5,13 @@
 // Third Enter port address in server.c first
 // Fourth Enter port address in client.c
 
+// First Run gcc server.c
+//             ./a.out
+// Second Run gcc client.c
+//             ./a.out
+// Third Enter port address in server.c first
+// Fourth Enter port address in client.c
+
 #include<sys/socket.h>
 #include<stdio.h>
 #include<netinet/in.h>
